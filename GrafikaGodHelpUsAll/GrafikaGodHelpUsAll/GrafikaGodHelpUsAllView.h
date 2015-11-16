@@ -20,6 +20,13 @@ public:
 
 // Overrides
 public:
+	void IzotropSaPoligonima(CDC * pDC);
+	void nacrtajPozadinu(CDC* painter,CRect prozor);
+	void nacrtajLeviProzor(CDC* painter,CRect prozor);
+	void nacrtajCentralniProzor(CDC* painter,CRect prozor);
+	void nacrtajDesniProzor(CDC* painter,CRect prozor);
+	void nacrtajKontrolnuTablu(CDC* painter, CRect prozor);
+	void nacrtajEkrane(CDC* painter, CRect tabla);
 	void BezMappiranja(CDC * pDC);
 	void IzotropniMapping(CDC * pDC);
 	void Kruzni(CDC* pDC,int x1,int y1,int x2,int y2,COLORREF color);

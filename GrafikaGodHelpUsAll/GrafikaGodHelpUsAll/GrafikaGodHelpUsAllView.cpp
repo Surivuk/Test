@@ -47,6 +47,233 @@ BOOL CGrafikaGodHelpUsAllView::PreCreateWindow(CREATESTRUCT& cs)
 
 	return CView::PreCreateWindow(cs);
 }
+//sa poligonima
+void CGrafikaGodHelpUsAllView::nacrtajPozadinu(CDC* painter,CRect prozor)
+{
+	CRect rect;
+	GetClientRect(&rect);
+	CBrush backBrush = CBrush(RGB(128, 128, 128));
+	
+	painter->FillRect(prozor, &backBrush);
+}
+
+void CGrafikaGodHelpUsAllView::nacrtajLeviProzor(CDC* painter,CRect prozor)
+{
+	//Olovka i cetka
+	CPen myPen = CPen(PS_SOLID, 4, BLACK_PEN);
+	CPen* defPen = painter->SelectObject(&myPen);
+
+	CBrush myBrush(RGB(124, 228, 255));
+	CBrush * defBrush = painter->SelectObject(&myBrush);
+
+	//Crtanje prozora
+	
+	double p = 0.05;
+
+	//painter->MoveTo(0, p*prozor.Height());
+	//painter->LineTo(p*prozor.Width(), p*prozor.Height());
+	
+	CPoint tacke[4] = {
+		CPoint(0, p*prozor.Height()),
+		CPoint(p*prozor.Width(), p*prozor.Height()),
+		CPoint(2 * p*prozor.Width(), 13 * p*prozor.Height()),
+		CPoint(0, 17 * p*prozor.Height()) };
+
+	painter->Polygon(tacke, 4);
+
+	//Vracanje konteksta
+	painter->SelectObject(defPen);
+	painter->SelectObject(defBrush);
+
+	myPen.DeleteObject();
+	myBrush.DeleteObject();
+}
+
+void CGrafikaGodHelpUsAllView::nacrtajCentralniProzor(CDC* painter,CRect prozor)
+{
+	//Olovka i cetka
+	CPen myPen = CPen(PS_SOLID, 4, BLACK_PEN);
+	CPen* defPen = painter->SelectObject(&myPen);
+
+	CBrush myBrush(RGB(124, 228, 255));
+	CBrush * defBrush = painter->SelectObject(&myBrush);
+
+	//Crtanje prozora
+	double p = 0.05;
+
+	CPoint tacke[5] = {
+		CPoint(1.7*p*prozor.Width(), p*prozor.Height()),
+		CPoint(18.3*p*prozor.Width(), p*prozor.Height()),
+		CPoint(17.3* p*prozor.Width(), 12.5 * p*prozor.Height()),
+		CPoint(10* p*prozor.Width(), 11 * p*prozor.Height()),
+		CPoint(2.7 * p*prozor.Width(), 12.5 * p*prozor.Height()) };
+
+	painter->Polygon(tacke, 5);
+	
+	//Vracanje konteksta
+	painter->SelectObject(defPen);
+	painter->SelectObject(defBrush);
+
+	myPen.DeleteObject();
+	myBrush.DeleteObject();
+}
+
+void CGrafikaGodHelpUsAllView::nacrtajDesniProzor(CDC* painter,CRect prozor)
+{
+	//Olovka i cetka
+	CPen myPen = CPen(PS_SOLID, 4, BLACK_PEN);
+	CPen* defPen = painter->SelectObject(&myPen);
+
+	CBrush myBrush(RGB(124, 228, 255));
+	CBrush * defBrush = painter->SelectObject(&myBrush);
+
+	//Crtanje prozora
+
+	double p = 0.05;
+	int offset = prozor.Width();
+
+	CPoint tacke[4] = {
+		CPoint(offset-0, p*prozor.Height()),
+		CPoint(offset-p*prozor.Width(), p*prozor.Height()),
+		CPoint(offset-2 * p*prozor.Width(), 13 * p*prozor.Height()),
+		CPoint(offset-0, 17 * p*prozor.Height()) };
+
+	painter->Polygon(tacke, 4);
+
+	//Vracanje konteksta
+	painter->SelectObject(defPen);
+	painter->SelectObject(defBrush);
+
+	myPen.DeleteObject();
+	myBrush.DeleteObject();
+}
+
+void CGrafikaGodHelpUsAllView::nacrtajKontrolnuTablu(CDC* painter, CRect prozor)
+{
+	//Olovka i cetka
+	CPen myPen = CPen(PS_SOLID, 4, BLACK_PEN);
+	CPen* defPen = painter->SelectObject(&myPen);
+
+	CBrush myBrush(RGB(64, 64, 64));
+	CBrush * defBrush = painter->SelectObject(&myBrush);
+
+	//Crtanje prozora
+
+	double p = 0.05;
+
+	//Path
+	painter->BeginPath();
+
+	//A-B Linija
+	painter->MoveTo(3 * p*prozor.Width(), 20 * p*prozor.Height());
+	painter->LineTo(3 * p*prozor.Width(), 17 * p*prozor.Height());
+	
+	//B-C Bezier
+	CPoint tacke[3]={
+		CPoint(3 * p*prozor.Width(), 17 * p*prozor.Height()),
+		CPoint(3 * p*prozor.Width(), 15.5 * p*prozor.Height()),
+		CPoint(4 * p*prozor.Width(), 15 * p*prozor.Height())
+	};
+
+	painter->PolyBezierTo(tacke, 3);
+
+	//C-D Linija
+	painter->LineTo(8 * p*prozor.Width(), 13 * p*prozor.Height());
+
+	//D-E Bezier
+	CPoint tacke1[3]={
+		CPoint(8 * p*prozor.Width(), 13 * p*prozor.Height()),
+		CPoint(10 * p*prozor.Width(), 12 * p*prozor.Height()),
+		CPoint(12 * p*prozor.Width(), 13 * p*prozor.Height())
+	};
+
+	painter->PolyBezierTo(tacke1, 3);
+
+	//E-F Linija
+	painter->LineTo(16 * p*prozor.Width(), 15 * p*prozor.Height());
+
+	//G-H Bezier
+	CPoint tacke2[3]={
+		CPoint(16 * p*prozor.Width(), 15 * p*prozor.Height()),
+		CPoint(17 * p*prozor.Width(), 15.5 * p*prozor.Height()),
+		CPoint(17 * p*prozor.Width(), 17 * p*prozor.Height())
+	};
+
+	painter->PolyBezierTo(tacke2, 3);
+
+	//H-I Linija
+	painter->LineTo(17 * p*prozor.Width(), 20 * p*prozor.Height());
+
+	//I-J Linija
+	painter->LineTo(3 * p*prozor.Width(), 20 * p*prozor.Height());
+
+	//Kraj putanje
+	painter->EndPath();
+	painter->StrokeAndFillPath();
+
+	//Vracanje konteksta
+	painter->SelectObject(defPen);
+	painter->SelectObject(defBrush);
+
+	myPen.DeleteObject();
+	myBrush.DeleteObject();
+}
+
+void CGrafikaGodHelpUsAllView::nacrtajEkrane(CDC* painter, CRect tabla)
+{
+	//Olovka i cetka
+	CPen myPen = CPen(PS_SOLID, 1, RGB(200,200,200));
+	CPen* defPen = painter->SelectObject(&myPen);
+
+	CBrush myBrush(RGB(32, 32, 32));
+	CBrush * defBrush = painter->SelectObject(&myBrush);
+
+	double p = 0.05;
+
+	//Levi ekran
+	CRect leviEkran = new CRect(8 * p*tabla.Width(), 15.5* p*tabla.Height(), 10 * p*tabla.Width(), 19 * p*tabla.Height());
+	painter->RoundRect(leviEkran, CPoint(2, 2));
+
+	//Desni ekran
+	CRect desniEkran = new CRect(10.2 * p*tabla.Width(), 15.5* p*tabla.Height(), 12.2* p*tabla.Width(), 19 * p*tabla.Height());
+	painter->RoundRect(desniEkran, CPoint(3, 3));
+
+	//Tekst na levom ekranu
+
+	//1) Font
+	CFont myFont;
+	CString naziv("Arial");
+	double fSize = 0.026*leviEkran.left;
+	myFont.CreateFont(fSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, naziv);
+	
+	CFont* defFont = painter->SelectObject(&myFont);
+
+	//2) Konfiguracija
+	COLORREF clrOld = painter->SetTextColor(RGB(0,200,0));
+	int defaultBkMode = painter->SetBkMode(TRANSPARENT);
+
+	//3) Tekst
+	CString leviTekst("358mph\n\nH: 23°\n\nA: 284°\n\n1217fpm");
+	CString desniTekst("1285m\n\n43°19'29""\n\n21°54'11""\n\n08:54:29");
+
+	//4) Iscrtavanje 
+
+	CRect display = CRect(8.1 * p*tabla.Width(), 15.8* p*tabla.Height(), 9.9 * p*tabla.Width(), 19 * p*tabla.Height());
+
+	painter->DrawText(leviTekst, display, DT_LEFT);
+	//painter->DrawText(desniTekst, display, DT_RIGHT);
+	
+	//5)Povratak
+	painter->SetBkMode(defaultBkMode);
+	painter->SelectObject(defFont);
+	myFont.DeleteObject();
+	
+	//Komentarisani ekrani
+}
+
+//kraj
+
+//sa Bezierovim krivama
 void CGrafikaGodHelpUsAllView::Prozori(CDC* pDC, CRect rect, CPoint* points, int length, COLORREF color)
 {
 	float a = 0.07;
@@ -270,6 +497,8 @@ void CGrafikaGodHelpUsAllView::ZaobljeniPravougaonik(CDC* pDC, CRect wall, COLOR
 	pDC->SelectObject(pOldFont);
 	font.DeleteObject();
 }
+//kraj
+
 void CGrafikaGodHelpUsAllView::IzotropniMapping(CDC* pDC)
 {
 	CRect rect;
@@ -307,6 +536,8 @@ void CGrafikaGodHelpUsAllView::IzotropniMapping(CDC* pDC)
 	Prozori(pDC, zid, points, 7, RGB(255, 0, 0));
 	ZaobljeniPravougaonik(pDC, zid, RGB(32, 32, 32));
 }
+
+//inline bez mapiranja
 void CGrafikaGodHelpUsAllView::BezMappiranja(CDC* pDC)
 {
 	CRect rect;
@@ -428,6 +659,32 @@ void CGrafikaGodHelpUsAllView::BezMappiranja(CDC* pDC)
 	background->DeleteObject();
 }
 
+void CGrafikaGodHelpUsAllView::IzotropSaPoligonima(CDC* painter)
+{
+	//Ekran
+	CRect rect; GetClientRect(&rect);
+
+	painter->SetMapMode(MM_ISOTROPIC);
+	painter->SetWindowExt(100,200);
+	painter->SetViewportExt(rect.right,rect.bottom);
+	painter->SetWindowOrg(0, 0);
+
+	//Cockpit
+	double p = 0.05;
+
+	if (rect.Height() > 0 && rect.Width() > 0)
+	{
+		CRect prozor = CRect(0, 0, 200 * rect.Width() / rect.Height(), 200);
+
+		nacrtajPozadinu(painter, prozor);
+		nacrtajLeviProzor(painter, prozor);
+		nacrtajCentralniProzor(painter, prozor);
+		nacrtajDesniProzor(painter, prozor);
+		nacrtajKontrolnuTablu(painter, prozor);
+		nacrtajEkrane(painter, prozor);
+	}
+}
+
 // CGrafikaGodHelpUsAllView drawing
 
 void CGrafikaGodHelpUsAllView::OnDraw(CDC* pDC)
@@ -437,8 +694,9 @@ void CGrafikaGodHelpUsAllView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	IzotropniMapping(pDC);
+	//IzotropniMapping(pDC);
 	//BezMappiranja(pDC);
+	IzotropSaPoligonima(pDC);
 }
 
 
