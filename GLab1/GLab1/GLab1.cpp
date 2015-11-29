@@ -1,25 +1,25 @@
 
-// GrafikaGodHelpUsAll.cpp : Defines the class behaviors for the application.
+// GLab1.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "GrafikaGodHelpUsAll.h"
+#include "GLab1.h"
 #include "MainFrm.h"
 
-#include "GrafikaGodHelpUsAllDoc.h"
-#include "GrafikaGodHelpUsAllView.h"
+#include "GLab1Doc.h"
+#include "GLab1View.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CGrafikaGodHelpUsAllApp
+// CGLab1App
 
-BEGIN_MESSAGE_MAP(CGrafikaGodHelpUsAllApp, CWinApp)
-	ON_COMMAND(ID_APP_ABOUT, &CGrafikaGodHelpUsAllApp::OnAppAbout)
+BEGIN_MESSAGE_MAP(CGLab1App, CWinApp)
+	ON_COMMAND(ID_APP_ABOUT, &CGLab1App::OnAppAbout)
 	// Standard file based document commands
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
@@ -28,9 +28,9 @@ BEGIN_MESSAGE_MAP(CGrafikaGodHelpUsAllApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CGrafikaGodHelpUsAllApp construction
+// CGLab1App construction
 
-CGrafikaGodHelpUsAllApp::CGrafikaGodHelpUsAllApp()
+CGLab1App::CGLab1App()
 {
 	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
@@ -43,20 +43,20 @@ CGrafikaGodHelpUsAllApp::CGrafikaGodHelpUsAllApp()
 
 	// TODO: replace application ID string below with unique ID string; recommended
 	// format for string is CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("GrafikaGodHelpUsAll.AppID.NoVersion"));
+	SetAppID(_T("GLab1.AppID.NoVersion"));
 
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
-// The one and only CGrafikaGodHelpUsAllApp object
+// The one and only CGLab1App object
 
-CGrafikaGodHelpUsAllApp theApp;
+CGLab1App theApp;
 
 
-// CGrafikaGodHelpUsAllApp initialization
+// CGLab1App initialization
 
-BOOL CGrafikaGodHelpUsAllApp::InitInstance()
+BOOL CGLab1App::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -101,9 +101,9 @@ BOOL CGrafikaGodHelpUsAllApp::InitInstance()
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
-		RUNTIME_CLASS(CGrafikaGodHelpUsAllDoc),
+		RUNTIME_CLASS(CGLab1Doc),
 		RUNTIME_CLASS(CMainFrame),       // main SDI frame window
-		RUNTIME_CLASS(CGrafikaGodHelpUsAllView));
+		RUNTIME_CLASS(CGLab1View));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -126,7 +126,7 @@ BOOL CGrafikaGodHelpUsAllApp::InitInstance()
 	return TRUE;
 }
 
-int CGrafikaGodHelpUsAllApp::ExitInstance()
+int CGLab1App::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
@@ -134,7 +134,7 @@ int CGrafikaGodHelpUsAllApp::ExitInstance()
 	return CWinApp::ExitInstance();
 }
 
-// CGrafikaGodHelpUsAllApp message handlers
+// CGLab1App message handlers
 
 
 // CAboutDlg dialog used for App About
@@ -168,13 +168,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // App command to run the dialog
-void CGrafikaGodHelpUsAllApp::OnAppAbout()
+void CGLab1App::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// CGrafikaGodHelpUsAllApp message handlers
+// CGLab1App message handlers
 
 
 

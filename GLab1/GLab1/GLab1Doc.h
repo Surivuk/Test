@@ -1,16 +1,16 @@
 
-// GrafikaGodHelpUsAllDoc.h : interface of the CGrafikaGodHelpUsAllDoc class
+// GLab1Doc.h : interface of the CGLab1Doc class
 //
 
 
 #pragma once
 
 
-class CGrafikaGodHelpUsAllDoc : public CDocument
+class CGLab1Doc : public CDocument
 {
 protected: // create from serialization only
-	CGrafikaGodHelpUsAllDoc();
-	DECLARE_DYNCREATE(CGrafikaGodHelpUsAllDoc)
+	CGLab1Doc();
+	DECLARE_DYNCREATE(CGLab1Doc)
 
 // Attributes
 public:
@@ -29,7 +29,7 @@ public:
 
 // Implementation
 public:
-	virtual ~CGrafikaGodHelpUsAllDoc();
+	virtual ~CGLab1Doc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

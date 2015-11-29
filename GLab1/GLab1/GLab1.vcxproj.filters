@@ -18,7 +18,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GrafikaGodHelpUsAll.h">
+    <ClInclude Include="GLab1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -30,18 +30,21 @@
     <ClInclude Include="MainFrm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GrafikaGodHelpUsAllDoc.h">
+    <ClInclude Include="GLab1Doc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GrafikaGodHelpUsAllView.h">
+    <ClInclude Include="GLab1View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GrafikaGodHelpUsAll.cpp">
+    <ClCompile Include="GLab1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -50,31 +53,40 @@
     <ClCompile Include="MainFrm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GrafikaGodHelpUsAllDoc.cpp">
+    <ClCompile Include="GLab1Doc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GrafikaGodHelpUsAllView.cpp">
+    <ClCompile Include="GLab1View.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="GrafikaGodHelpUsAll.rc">
+    <ResourceCompile Include="GLab1.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\GrafikaGodHelpUsAll.rc2">
+    <None Include="res\GLab1.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\GrafikaGodHelpUsAllDoc.ico">
+    <Image Include="res\GLab1Doc.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\GrafikaGodHelpUsAll.ico">
+    <Image Include="res\GLab1.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Debug\Suhoj.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

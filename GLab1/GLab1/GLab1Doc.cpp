@@ -1,15 +1,15 @@
 
-// GrafikaGodHelpUsAllDoc.cpp : implementation of the CGrafikaGodHelpUsAllDoc class
+// GLab1Doc.cpp : implementation of the CGLab1Doc class
 //
 
 #include "stdafx.h"
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
 #ifndef SHARED_HANDLERS
-#include "GrafikaGodHelpUsAll.h"
+#include "GLab1.h"
 #endif
 
-#include "GrafikaGodHelpUsAllDoc.h"
+#include "GLab1Doc.h"
 
 #include <propkey.h>
 
@@ -17,27 +17,27 @@
 #define new DEBUG_NEW
 #endif
 
-// CGrafikaGodHelpUsAllDoc
+// CGLab1Doc
 
-IMPLEMENT_DYNCREATE(CGrafikaGodHelpUsAllDoc, CDocument)
+IMPLEMENT_DYNCREATE(CGLab1Doc, CDocument)
 
-BEGIN_MESSAGE_MAP(CGrafikaGodHelpUsAllDoc, CDocument)
+BEGIN_MESSAGE_MAP(CGLab1Doc, CDocument)
 END_MESSAGE_MAP()
 
 
-// CGrafikaGodHelpUsAllDoc construction/destruction
+// CGLab1Doc construction/destruction
 
-CGrafikaGodHelpUsAllDoc::CGrafikaGodHelpUsAllDoc()
+CGLab1Doc::CGLab1Doc()
 {
 	// TODO: add one-time construction code here
 
 }
 
-CGrafikaGodHelpUsAllDoc::~CGrafikaGodHelpUsAllDoc()
+CGLab1Doc::~CGLab1Doc()
 {
 }
 
-BOOL CGrafikaGodHelpUsAllDoc::OnNewDocument()
+BOOL CGLab1Doc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
@@ -51,9 +51,9 @@ BOOL CGrafikaGodHelpUsAllDoc::OnNewDocument()
 
 
 
-// CGrafikaGodHelpUsAllDoc serialization
+// CGLab1Doc serialization
 
-void CGrafikaGodHelpUsAllDoc::Serialize(CArchive& ar)
+void CGLab1Doc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -68,7 +68,7 @@ void CGrafikaGodHelpUsAllDoc::Serialize(CArchive& ar)
 #ifdef SHARED_HANDLERS
 
 // Support for thumbnails
-void CGrafikaGodHelpUsAllDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
+void CGLab1Doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
 	// Modify this code to draw the document's data
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
@@ -89,7 +89,7 @@ void CGrafikaGodHelpUsAllDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 }
 
 // Support for Search Handlers
-void CGrafikaGodHelpUsAllDoc::InitializeSearchContent()
+void CGLab1Doc::InitializeSearchContent()
 {
 	CString strSearchContent;
 	// Set search contents from document's data. 
@@ -99,7 +99,7 @@ void CGrafikaGodHelpUsAllDoc::InitializeSearchContent()
 	SetSearchContent(strSearchContent);
 }
 
-void CGrafikaGodHelpUsAllDoc::SetSearchContent(const CString& value)
+void CGLab1Doc::SetSearchContent(const CString& value)
 {
 	if (value.IsEmpty())
 	{
@@ -119,19 +119,19 @@ void CGrafikaGodHelpUsAllDoc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// CGrafikaGodHelpUsAllDoc diagnostics
+// CGLab1Doc diagnostics
 
 #ifdef _DEBUG
-void CGrafikaGodHelpUsAllDoc::AssertValid() const
+void CGLab1Doc::AssertValid() const
 {
 	CDocument::AssertValid();
 }
 
-void CGrafikaGodHelpUsAllDoc::Dump(CDumpContext& dc) const
+void CGLab1Doc::Dump(CDumpContext& dc) const
 {
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
 
 
-// CGrafikaGodHelpUsAllDoc commands
+// CGLab1Doc commands

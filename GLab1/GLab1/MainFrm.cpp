@@ -3,7 +3,7 @@
 //
 
 #include "stdafx.h"
-#include "GrafikaGodHelpUsAll.h"
+#include "GLab1.h"
 
 #include "MainFrm.h"
 

@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D5ACA21C-A588-40F7-A364-BD862DF3166F}</ProjectGuid>
-    <RootNamespace>GrafikaGodHelpUsAll</RootNamespace>
+    <ProjectGuid>{CDA3F603-164E-4162-BC23-D1DC7F7A66CF}</ProjectGuid>
+    <RootNamespace>GLab1</RootNamespace>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -101,18 +101,20 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GrafikaGodHelpUsAll.h" />
-    <ClInclude Include="GrafikaGodHelpUsAllDoc.h" />
-    <ClInclude Include="GrafikaGodHelpUsAllView.h" />
+    <ClInclude Include="DImage.h" />
+    <ClInclude Include="GLab1.h" />
+    <ClInclude Include="GLab1Doc.h" />
+    <ClInclude Include="GLab1View.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GrafikaGodHelpUsAll.cpp" />
-    <ClCompile Include="GrafikaGodHelpUsAllDoc.cpp" />
-    <ClCompile Include="GrafikaGodHelpUsAllView.cpp" />
+    <ClCompile Include="DImage.cpp" />
+    <ClCompile Include="GLab1.cpp" />
+    <ClCompile Include="GLab1Doc.cpp" />
+    <ClCompile Include="GLab1View.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -120,14 +122,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="GrafikaGodHelpUsAll.rc" />
+    <ResourceCompile Include="GLab1.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\GrafikaGodHelpUsAll.rc2" />
+    <None Include="res\GLab1.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\GrafikaGodHelpUsAll.ico" />
-    <Image Include="res\GrafikaGodHelpUsAllDoc.ico" />
+    <Image Include="Debug\Suhoj.bmp" />
+    <Image Include="res\bitmap5.bmp" />
+    <Image Include="res\GLab1.ico" />
+    <Image Include="res\GLab1Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
