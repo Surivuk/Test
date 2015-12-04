@@ -24,14 +24,18 @@ IMPLEMENT_DYNCREATE(CGLab1View, CView)
 
 BEGIN_MESSAGE_MAP(CGLab1View, CView)
 	ON_WM_RBUTTONUP()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
+CPoint startPoint;
+int longest;
 // CGLab1View construction/destruction
 
 CGLab1View::CGLab1View()
 {
 	// TODO: add construction code here
-
+	longest = 0;
 }
 
 CGLab1View::~CGLab1View()
@@ -73,51 +77,72 @@ void CGLab1View::OnDraw(CDC* painter)
 		CRect prozor = CRect(0, 0, 200 * rect.Width() / rect.Height(), 200);
 
 		nacrtajPozadinu(painter, prozor);
-		nacrtajLeviProzor(painter, prozor);
-		nacrtajCentralniProzor(painter, prozor);
-		nacrtajDesniProzor(painter, prozor);
-		nacrtajKontrolnuTablu(painter, prozor);
-		nacrtajEkrane(painter, prozor);
+		//nacrtajLeviProzor(painter, prozor);
+		//nacrtajCentralniProzor(painter, prozor);
+		//nacrtajDesniProzor(painter, prozor);
+		//nacrtajKontrolnuTablu(painter, prozor);
+		//nacrtajEkrane(painter, prozor);
 
-		//Desni donji sat za visinu
+		////Desni donji sat za visinu
 
 
 
-		float width = 3 * p*min(15.2*p*prozor.Width(), prozor.Height());
-		int desniSatX = prozor.Width() / 2 + 2.9*width;
-		int desniSatY = 16.5*p*prozor.Height() - 2;  
+		//float width = 3 * p*min(15.2*p*prozor.Width(), prozor.Height());
+		//int desniSatX = prozor.Width() / 2 + 2.9*width;
+		//int desniSatY = 16.5*p*prozor.Height() - 2;  
 
-		CRect desniSat = CRect(desniSatX, desniSatY,desniSatX+width,desniSatY+width);
-		//painter->Rectangle(desniSat);
-		
-		CString vrednosti[7] = { CString("-3"), CString("-2"), CString("-1"), CString("0"), CString("1"), CString("2"), CString("3") };
-		nacrtajSat(painter, prozor, desniSat, 13, vrednosti, 7, 120, 420, 2, 45);
+		//CRect desniSat = CRect(desniSatX, desniSatY,desniSatX+width,desniSatY+width);
+		////painter->Rectangle(desniSat);
+		//
+		//CString vrednosti[7] = { CString("-3"), CString("-2"), CString("-1"), CString("0"), CString("1"), CString("2"), CString("3") };
+		//nacrtajSat(painter, prozor, desniSat, 13, vrednosti, 7, 120, 420, 2, 45);
 
-		//Levi donji sat za brzinu
-		int leviSatX = prozor.Width() / 2 - 3.7*width;
-		int leviSatY = 16.5*p*prozor.Height() - 2;
-		CRect leviSat = CRect(leviSatX, leviSatY, leviSatX + width, leviSatY + width);
-		
-		CString vrednosti1[8] = { CString("4"), CString("8"), CString("12"), CString("16"), CString("20"), CString("24"), CString("28") , CString("32")};
-		nacrtajSat(painter, prozor, leviSat, 30, vrednosti1, 8, 40, 340, 2, 180);
-		//painter->Rectangle(leviSat);
+		////Levi donji sat za brzinu
+		//int leviSatX = prozor.Width() / 2 - 3.7*width;
+		//int leviSatY = 16.5*p*prozor.Height() - 2;
+		//CRect leviSat = CRect(leviSatX, leviSatY, leviSatX + width, leviSatY + width);
+		//
+		//CString vrednosti1[8] = { CString("4"), CString("8"), CString("12"), CString("16"), CString("20"), CString("24"), CString("28") , CString("32")};
+		//nacrtajSat(painter, prozor, leviSat, 30, vrednosti1, 8, 40, 340, 2, 180);
+		////painter->Rectangle(leviSat);
 
-		//Levi gornji sat za kompas
-		int leviGornjiSatX = prozor.Width() / 2 - 2.6*width;
-		int leviGornjiSatY = 15*p*prozor.Height() - 2;
-		CRect leviGornjiSat = CRect(leviGornjiSatX, leviGornjiSatY, leviGornjiSatX + width, leviGornjiSatY + width);
+		////Levi gornji sat za kompas
+		//int leviGornjiSatX = prozor.Width() / 2 - 2.6*width;
+		//int leviGornjiSatY = 15*p*prozor.Height() - 2;
+		//CRect leviGornjiSat = CRect(leviGornjiSatX, leviGornjiSatY, leviGornjiSatX + width, leviGornjiSatY + width);
 
-		CString vrednosti2[8] = { CString("N"), CString("NE"), CString("E"), CString("SE"), CString("S"), CString("SW"), CString("W"), CString("NW") };
-		nacrtajSat(painter, prozor, leviGornjiSat, 16, vrednosti2, 8, 0, 320, 3, 90);
+		//CString vrednosti2[8] = { CString("N"), CString("NE"), CString("E"), CString("SE"), CString("S"), CString("SW"), CString("W"), CString("NW") };
+		//nacrtajSat(painter, prozor, leviGornjiSat, 16, vrednosti2, 8, 0, 320, 3, 90);
 
-		//Desni gornji sat ziroskop 
-		int desniGornjiSatX = prozor.Width() / 2 + 1.7*width;
-		int desniGornjiSatY = 15*p*prozor.Height() - 2;
-		CRect desniGornjiSat = CRect(desniGornjiSatX, desniGornjiSatY, desniGornjiSatX + width, desniGornjiSatY + width);
-		nacrtajZiroskop(painter, prozor, desniGornjiSat,325);
-		
-		
-		testing(painter,prozor);
+		////Desni gornji sat ziroskop 
+		//int desniGornjiSatX = prozor.Width() / 2 + 1.7*width;
+		//int desniGornjiSatY = 15*p*prozor.Height() - 2;
+		//CRect desniGornjiSat = CRect(desniGornjiSatX, desniGornjiSatY, desniGornjiSatX + width, desniGornjiSatY + width);
+		//nacrtajZiroskop(painter, prozor, desniGornjiSat,325);
+		//
+		//
+		////PRVI FUEL
+		//COLORREF green(RGB(0, 255, 0));
+		//COLORREF red(RGB(255, 0, 0));
+		//COLORREF yellow(RGB(255, 255, 0));
+		//COLORREF fuelColor[] = { red, green, yellow };
+		//CPoint p1, p2;
+		//p1.SetPoint(prozor.Width() * 0.395, prozor.Height() *  0.66);
+		//p2.SetPoint(prozor.Width() * 0.463, prozor.Height() *  0.745);
+		//CRect watch(p1, p2);
+		//nacrtajFuelWatch(painter, prozor, watch, fuelColor);
+
+		////DRUGI FUEL
+		//fuelColor[0] = yellow;
+		//fuelColor[1] = green;
+		//fuelColor[2] = red;
+		//p1.SetPoint(prozor.Width() * 0.531, prozor.Height() * 0.66);
+		//p2.SetPoint(prozor.Width() * 0.6, prozor.Height() * 0.745);
+		//watch.SetRect(p1, p2);
+		//nacrtajFuelWatch(painter, prozor, watch, fuelColor);
+		////DrawPoint(pDC, zid);
+
+		//testing(painter,prozor);
 	}
 
 }
@@ -667,120 +692,64 @@ void CGLab1View::nacrtajElZaGorivo(CDC* painter, CRect prozor, CRect sat, int br
 	painter->LineTo(doleStart);
 
 }
+HENHMETAFILE onePath(CDC* painter,CRect wall)
+{
+	CMetaFileDC MetaDC;
+	bool doesntExist = MetaDC.CreateEnhanced(painter,CString("Test.emf"),CRect(0,0,2650,5300),CString("OMK"));
+	if(doesntExist)
+	{
+		CPen * green = new CPen(PS_SOLID,0,RGB(255,0,0));
+		CPen * old = MetaDC.SelectObject(green);
+	
+		CBrush brush(RGB(0,255,0));
+		MetaDC.SelectObject(&brush);
+		
+		MetaDC.Rectangle(0,0,30,80);
 
+		MetaDC.SelectObject(old);
+		HENHMETAFILE MF;
+		MF = MetaDC.CloseEnhanced();
+		MetaDC.DeleteDC();
+		DeleteEnhMetaFile(MF);
+		old->DeleteObject();
+		green->DeleteObject();
+	}
+	
+	return GetEnhMetaFile(CString("Test.emf"));
+}
 void CGLab1View::testing(CDC* pDC, CRect wall)
 {
-	CPen pen(PS_SOLID, 1, RGB(255, 255, 255));
-	pDC->SelectObject(pen);
-	CBrush newBrush;
-	newBrush.CreateSolidBrush(RGB(32, 32, 32));
-	pDC->SelectObject(newBrush);
-
-	int width = wall.Width();
-	int height = wall.Height();
-
-	CPoint p1;
-	CPoint p2;
-	CRect krug;
-
-	/////////ARC
-	pDC->BeginPath();
-	p1.SetPoint(width * 0.415, height *  0.66);
-	p2.SetPoint(width * 0.483, height *  0.745);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width * 0.415, height *  0.69);
-	p2.SetPoint(width * 0.483, height *  0.69);
-	pDC->MoveTo(width * 0.46, height *  0.72);
-	pDC->ArcTo(krug, p2, p1);
-
-	p1.SetPoint(width * 0.46, height *  0.74);
-	p2.SetPoint(width * 0.436, height *  0.7);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width * 0.46, height *  0.72);
-	p2.SetPoint(width * 0.436, height *  0.72);	
-	pDC->SetArcDirection(AD_CLOCKWISE);
-	pDC->ArcTo(krug, p2, p1);
-
-	pDC->EndPath();
-	pDC->StrokeAndFillPath();
-
-	//pDC->FloodFill(width * 0.416, height *  0.7, RGB(255, 255, 255));
-
-	// zeleni deo
-	CPen pen2(PS_SOLID, 2, RGB(0, 255, 0));
-	pDC->SelectObject(pen2);
-	p1.SetPoint(width * 0.428, height *  0.675);
-	p2.SetPoint(width * 0.472, height *  0.74);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width *  0.43, height *  0.69);
-	p2.SetPoint(width * 0.47, height *  0.69);
-	pDC->Arc(krug, p1, p2);
-
-	// crveni deo
-	CPen pen3(PS_SOLID, 2, RGB(255, 0, 0));
-	pDC->SelectObject(pen3);
-	p2.SetPoint(width * 0.435, height *  0.67);
-	pDC->Arc(krug, p1, p2);
-
-	// zuti deo
-	CPen pen4(PS_SOLID, 2, RGB(255, 255, 0));
-	pDC->SelectObject(pen4);
-	p1.SetPoint(width *  0.464, height *  0.67);
-	p2.SetPoint(width * 0.47, height *  0.69);
-	pDC->SetArcDirection(AD_COUNTERCLOCKWISE);
-	pDC->Arc(krug, p2, p1);
-
-	/////////////FUEL2///////////////////
-
-	pDC->SelectObject(pen);
+	CRect imgRect(wall);
+	imgRect.bottom = imgRect.bottom / 2;
+	imgRect.top = imgRect.top / 2 + imgRect.Height()/4;
+	imgRect.left = imgRect.left / 2 + imgRect.Width()/4;
+	imgRect.right = imgRect.right / 2;
 
 	pDC->BeginPath();
-	p1.SetPoint(width * 0.515, height *  0.66);
-	p2.SetPoint(width * 0.583, height *  0.745);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width * 0.515, height *  0.69);
-	p2.SetPoint(width * 0.583, height *  0.69);
-	pDC->MoveTo(width * 0.56, height *  0.72);
-	pDC->ArcTo(krug, p2, p1);
-
-	p1.SetPoint(width * 0.56, height *  0.74);
-	p2.SetPoint(width * 0.536, height *  0.7);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width * 0.56, height *  0.72);
-	p2.SetPoint(width * 0.536, height *  0.72);
-	pDC->SetArcDirection(AD_CLOCKWISE);
-	pDC->ArcTo(krug, p2, p1);
-
+	pDC->Ellipse(imgRect);
 	pDC->EndPath();
-	pDC->StrokeAndFillPath();
 
-	// zeleni deo
-	pDC->SelectObject(pen2);
-	p1.SetPoint(width * 0.528, height *  0.675);
-	p2.SetPoint(width * 0.572, height *  0.74);
-	krug.SetRect(p1, p2);
-	p1.SetPoint(width *  0.53, height *  0.69);
-	p2.SetPoint(width * 0.57, height *  0.69);
-	pDC->Arc(krug, p1, p2);
 
-	// crveni deo
-	pDC->SelectObject(pen4);
-	p2.SetPoint(width * 0.535, height *  0.67);
-	pDC->Arc(krug, p1, p2);
+	CRgn region;
+	region.CreateFromPath(pDC);
+	
+	CRgn region2;
+	region2.CreateRectRgn(0,0,50,50);
 
-	// zuti deo
-	pDC->SelectObject(pen3);
-	p1.SetPoint(width *  0.564, height *  0.67);
-	p2.SetPoint(width * 0.57, height *  0.69);
-	pDC->SetArcDirection(AD_COUNTERCLOCKWISE);
-	pDC->Arc(krug, p2, p1);
+	region.CombineRgn(&region,&region2,RGN_XOR);
 
-	/////////////////////////////////////
-	pen4.DeleteObject();
-	pen3.DeleteObject();
-	pen2.DeleteObject();
-	pen.DeleteObject();
-	newBrush.DeleteObject();
+	//pDC->SelectClipRgn(&region);
+
+	HENHMETAFILE MF = onePath(pDC,wall);
+
+	PlayEnhMetaFile(pDC->m_hDC, MF, wall);
+
+	DImage test;
+	bool omk = test.Load(CString("Map.png"));
+	CRect pictureSize = new CRect(0, 0, test.Width(), test.Height());
+	//if(omk)
+		//test.Draw(pDC,pictureSize,wall);
+	
 }
 //lab3
 
@@ -850,6 +819,115 @@ void CGLab1View::nacrtajNebo(CDC* painter,int n,CPoint niz[])
 
 	
 
+}
+void CGLab1View::nacrtajFuelWatch(CDC * pDC, CRect wall, CRect watch, COLORREF fuelColor[])
+{
+	CPen pen(PS_SOLID, 1, RGB(255, 255, 255));
+	pDC->SelectObject(pen);
+	CBrush newBrush;
+	newBrush.CreateSolidBrush(RGB(32, 32, 32));
+	pDC->SelectObject(newBrush);
+
+	int width = wall.Width();
+	int height = wall.Height();
+
+	CPoint p1;
+	CPoint p2;
+	//CRect krug;
+
+	/////////ARC
+	//pDC->BeginPath();
+
+	p1.SetPoint(width * 0.395, height *  0.66);
+	p2.SetPoint(width * 0.463, height *  0.745);
+	//krug.SetRect(p1, p2);
+	
+	p1.SetPoint(width * 0.395, height *  0.69);
+	p2.SetPoint(width * 0.463, height *  0.69);
+	//pDC->MoveTo(width * 0.44, height *  0.72);
+	//pDC->ArcTo(krug, p2, p1);
+
+	///////////FUEL1////////////////////////
+	int startEndHeightArc = (watch.bottom + watch.top) / 2.03;
+
+	pDC->BeginPath();
+	CPoint p3, p4;
+	p3.SetPoint(watch.left, startEndHeightArc);
+	p4.SetPoint(watch.right, startEndHeightArc);
+	
+	p1.SetPoint(watch.left + watch.Width() * 0.25, watch.bottom + watch.Height() * 0.25);
+	p2.SetPoint(watch.left + watch.Width() * 0.75, watch.bottom - watch.Height() * 0.25);
+	CRect partWatch;
+	partWatch.SetRect(p1, p2);
+	startEndHeightArc = (partWatch.bottom + partWatch.top) / 2.03;
+	p1.SetPoint(partWatch.left, startEndHeightArc);
+	p2.SetPoint(partWatch.right, startEndHeightArc);
+
+	pDC->MoveTo(watch.left + watch.Width() * 0.75, startEndHeightArc);
+	pDC->ArcTo(watch, p4, p3);
+	pDC->SetArcDirection(AD_CLOCKWISE);
+	pDC->ArcTo(partWatch, p1, p2);
+
+	pDC->EndPath();
+	pDC->StrokeAndFillPath();
+
+
+	//pDC->Rectangle(watch);
+	//pDC->Rectangle(partWatch);
+	CRect rectStrelica = partWatch;
+
+	//zeleni deo (srednji)
+	CPen greenPen(PS_SOLID, 2, fuelColor[1]);
+	pDC->SelectObject(greenPen);
+	p1.SetPoint(watch.left + watch.Width() * 0.12, watch.top + watch.Height() * 0.25);
+	p2.SetPoint(watch.right - watch.Width() * 0.1, watch.bottom - watch.Height() * 0.1);
+	partWatch.SetRect(p1, p2);
+	startEndHeightArc = (partWatch.bottom + partWatch.top) / 2.04;
+	p1.SetPoint(partWatch.left, startEndHeightArc);
+	p2.SetPoint(partWatch.right, startEndHeightArc);
+	pDC->Arc(partWatch, p1, p2);
+
+	//Crveni deo (levi deo)
+	CPen redPen(PS_SOLID, 2, fuelColor[0]);
+	pDC->SelectObject(redPen);
+	p1.SetPoint(partWatch.left, startEndHeightArc);
+	p2.SetPoint(partWatch.left + watch.Width() * 0.3, startEndHeightArc);
+	pDC->Arc(partWatch, p1, p2);
+	
+	//Zuti deo (desni deo)
+	CPen yellowPen(PS_SOLID, 2, fuelColor[2]);
+	pDC->SelectObject(yellowPen);
+	p1.SetPoint(partWatch.right - watch.Width() * 0.3, startEndHeightArc);
+	p2.SetPoint(partWatch.right, startEndHeightArc);
+	pDC->SetArcDirection(AD_COUNTERCLOCKWISE);
+	pDC->Arc(partWatch, p2, p1);
+
+	//Strelice
+	//createClassicNeedle(pDC, watch);
+	//pDC->Rectangle(rectStrelica);
+	CPoint nizStrelica[3] = {
+	CPoint(rectStrelica.left + rectStrelica.Width() / 2  - 1, rectStrelica.bottom ),
+	CPoint(rectStrelica.left + rectStrelica.Width() / 2 + 1, rectStrelica.bottom),
+	CPoint(partWatch.left + partWatch.Width() / 2, partWatch.top - 2),
+	};
+
+	pDC->BeginPath();
+	CPen pen3(PS_SOLID, 1, RGB(255, 255, 255));
+	pDC->SelectObject(pen3);
+	CBrush newBrush3;
+	newBrush3.CreateSolidBrush(RGB(255, 255, 255));
+	pDC->SelectObject(newBrush3);
+
+	pDC->Polygon(nizStrelica, 3);
+
+	pDC->EndPath();
+	pDC->StrokeAndFillPath();
+
+	redPen.DeleteObject();
+	yellowPen.DeleteObject();
+	greenPen.DeleteObject();
+	pen.DeleteObject();
+	newBrush.DeleteObject();
 }
 // Pomocne f-je
 
@@ -1315,4 +1393,73 @@ void CGLab1View::OnRButtonUp(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 
 	TRACE("Pozicija: %d,%d\n", point.x, point.y);
+}
+
+
+void CGLab1View::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call defeault
+	startPoint.SetPoint(point.x,point.y);
+	//CView::OnLButtonDown(nFlags, point);
+}
+bool calculate(CPoint p1,CPoint p2,long fontLen)
+{
+	// pow((p2.x - p1.x),2) + pow((p2.y - p1.y))^2)
+	float distance = sqrt((float)(pow((float)p2.x - p1.x,2) + pow((float)p2.y - p1.y,2)));
+	long floor = (long)distance;
+	if(floor < fontLen)
+		return false;
+	else
+		return true;
+}
+
+void CGLab1View::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	CDC* painter = this->GetDC();
+	painter->MoveTo(startPoint);
+	painter->LineTo(point);
+	int ugao;
+	double koeficijentUgla = (double)(point.y-startPoint.y) / (double)(point.x - startPoint.x);
+	ugao = radian_u_stepen(atan(koeficijentUgla));
+	CFont font = CFont();
+	CFont pomerenFont = CFont();
+	painter->SetBkMode(TRANSPARENT);
+	CPen * oldPen, * newOne;
+	newOne = new CPen(PS_SOLID,1,RGB(0,0,130));
+	oldPen = painter->SelectObject(newOne);
+	font.CreateFont(20,0,0,0,400,0,0,0,0,0,0,0,0,CString("Times New Roman"));
+	CFont * oldFont = painter->SelectObject(&font);
+	
+	CString tekst = CString("Testing domaci.");
+	CSize textSize = painter->GetTextExtent(tekst);
+	
+	
+	if(calculate(startPoint,point,textSize.cx))
+	{
+		
+		this->MessageBox(CString("Tekst je taman."));
+		pomerenFont.CreateFont(20,0,ugao*10*-1,0,400,0,0,0,0,0,0,0,0,CString("Times New Roman"));
+		painter->SelectObject(&pomerenFont);
+		painter->SetTextAlign(TA_BASELINE);
+		bool rightToLeftPositiveStroke = startPoint.x > point.x && startPoint.y > point.y;
+		bool rightToLeftNegativeStroke = startPoint.x > point.x && startPoint.y < point.y;
+		if(rightToLeftPositiveStroke || rightToLeftNegativeStroke)
+		{
+			painter->TextOut(point.x,point.y,tekst);
+		}
+		else
+		{
+			painter->TextOut(startPoint.x,startPoint.y,tekst);
+		}
+		
+		
+	}
+	else
+	{
+		this->MessageBox(CString("Tekst je predug."));
+	}
+
+	painter->DeleteDC();
+	//CView::OnLButtonUp(nFlags, point);
 }

@@ -50,6 +50,7 @@ public:
 	HENHMETAFILE createPlaneNeedle(CDC* painter, CRect prozor);
 
 	//lab3
+	void nacrtajFuelWatch(CDC * pDC, CRect wall, CRect watch, COLORREF fuelColor[]);
 	void nacrtajNebo(CDC* painter,int n,CPoint poly[]);
 	static void nacrtajAvion(CDC* painter,CRect prozor,CString putanjaSlike);
 	//--- pomocne metode ---
@@ -75,6 +76,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // debug version in GLab1View.cpp
