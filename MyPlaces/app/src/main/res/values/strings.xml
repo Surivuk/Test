@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Places</string>
+    <string name="action_settings">Settings</string>
+    <string name="show_map">Show Map</string>
+    <string name="new_place">New Place</string>
+    <string name="my_place">My Places</string>
+    <string name="about">About</string>
+    <string name="about_text">This is my first Activity in XML. This is About page. Aleksandar Milosevic.</string>
+    <string name="ok">OK</string>
+    <string name="title_activity_my_places_list">My Places</string>
+</resources>
